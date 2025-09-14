@@ -45,7 +45,7 @@
   },
   "homepage": "https://cosmos-connect.dev",
   "engines": {
-    "node": "18.x",
+    "node": "22.x",
     "npm": ">=8.0.0"
   },
   "browserslist": [
