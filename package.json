@@ -38,10 +38,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cosmos-connect/cosmos-connect.git"
+    "url": "https://github.com/ProTechPh/Cosmos-Connect.git"
   },
   "bugs": {
-    "url": "https://github.com/cosmos-connect/cosmos-connect/issues"
+    "url": "https://github.com/ProTechPh/Cosmos-Connect/issues"
   },
   "homepage": "https://cosmos-connect.dev",
   "engines": {

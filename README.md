@@ -7,7 +7,7 @@ A beautiful, responsive web application that provides clean access to NASA's vas
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![NASA API](https://img.shields.io/badge/NASA-API-red?style=for-the-badge&logo=nasa)](https://api.nasa.gov/)
 
-![Cosmos Connect](https://raw.githubusercontent.com/cosmos-connect/cosmos-connect/main/assets/images/preview.png)
+![Cosmos Connect](https://raw.githubusercontent.com/ProTechPh/Cosmos-Connect/main/assets/images/preview.png)
 
 ## 🌌 Live Demo
 
@@ -64,8 +64,8 @@ Experience Cosmos Connect live: **[cosmos-connect.vercel.app](https://cosmos-con
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/cosmos-connect/cosmos-connect.git
-   cd cosmos-connect
+   git clone https://github.com/ProTechPh/Cosmos-Connect.git
+   cd Cosmos-Connect
    ```
 
 2. **Install dependencies (Optional for development)**
@@ -396,9 +396,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Getting Help:**
 - **Documentation**: Check this README and inline code comments
-- **Issues**: Report bugs on [GitHub Issues](https://github.com/cosmos-connect/cosmos-connect/issues)
+- **Issues**: Report bugs on [GitHub Issues](https://github.com/ProTechPh/Cosmos-Connect/issues)
 - **NASA API Help**: Visit [NASA API Documentation](https://api.nasa.gov/)
-- **Community**: Join discussions in GitHub Discussions
+- **Community**: Join discussions in [GitHub Discussions](https://github.com/ProTechPh/Cosmos-Connect/discussions)
 
 ## 🌟 Show Your Support
 
