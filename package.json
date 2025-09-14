@@ -4,8 +4,8 @@
   "description": "A beautiful, responsive web application that provides clean access to NASA's space data through an intuitive glass morphism interface",
   "main": "index.html",
   "scripts": {
-    "start": "npx serve -s . -l 8000",
-    "dev": "npx serve -s . -l 3000",
+    "start": "npx serve . -l 8000",
+    "dev": "npx serve . -l 3000",
     "build": "node scripts/build.js",
     "lint": "eslint js/**/*.js",
     "format": "prettier --write \"**/*.{js,css,html,md}\"",

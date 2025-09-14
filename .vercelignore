@@ -1,0 +1,12 @@
+node_modules
+.git
+.env*
+scripts
+optimized
+*.log
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+*.tmp
+*.temp
