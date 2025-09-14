@@ -177,13 +177,20 @@ class MarsRoversPage {
             const selectedCamera = document.getElementById('cameraSelect').value;
             const camera = selectedCamera === 'all' ? null : selectedCamera;
             
-            const photos = await this.apiService.getRoverPhotos(
+            const response = await this.apiService.getRoverPhotos(
                 this.currentRover,
                 this.currentSol,
                 camera
             );
 
-            this.currentPhotos = photos || [];
+            // Extract photos array from API response
+            this.currentPhotos = (response && response.photos) ? response.photos : [];
+            
+            // Ensure currentPhotos is always an array
+            if (!Array.isArray(this.currentPhotos)) {
+                console.warn('currentPhotos is not an array, forcing to empty array');
+                this.currentPhotos = [];
+            }
             this.filterPhotos();
             
             if (this.currentPhotos.length === 0) {
@@ -203,13 +210,19 @@ class MarsRoversPage {
     }
 
     filterPhotos() {
+        // Ensure currentPhotos is an array before filtering
+        if (!Array.isArray(this.currentPhotos)) {
+            console.warn('currentPhotos is not an array in filterPhotos, initializing to empty array');
+            this.currentPhotos = [];
+        }
+        
         const cameraFilter = document.getElementById('cameraFilter').value;
         
         if (cameraFilter === 'all') {
             this.filteredPhotos = [...this.currentPhotos];
         } else {
             this.filteredPhotos = this.currentPhotos.filter(photo => 
-                photo.camera.name === cameraFilter
+                photo.camera && photo.camera.name === cameraFilter
             );
         }
 
@@ -263,7 +276,7 @@ class MarsRoversPage {
                         </div>
                         <div class="photo-info small text-muted">
                             <div>Sol ${photo.sol}</div>
-                            <div>${formatDate(photo.earth_date)}</div>
+                            <div>${DateUtils.formatDate(photo.earth_date)}</div>
                         </div>
                     </div>
                 </div>
@@ -292,7 +305,7 @@ class MarsRoversPage {
                         <h6 class="mb-1">Photo ID: ${photo.id}</h6>
                         <div class="text-muted small">
                             <div><strong>Camera:</strong> ${photo.camera.full_name}</div>
-                            <div><strong>Sol:</strong> ${photo.sol} | <strong>Earth Date:</strong> ${formatDate(photo.earth_date)}</div>
+                            <div><strong>Sol:</strong> ${photo.sol} | <strong>Earth Date:</strong> ${DateUtils.formatDate(photo.earth_date)}</div>
                         </div>
                     </div>
                     <div class="col-md-4 text-end">
@@ -380,12 +393,16 @@ class MarsRoversPage {
 
     populateCameraFilter() {
         const cameraFilter = document.getElementById('cameraFilter');
-        const currentValue = cameraFilter.value;
         const cameras = new Set();
         
-        this.currentPhotos.forEach(photo => {
-            cameras.add(photo.camera.name);
-        });
+        // Ensure currentPhotos is an array before processing
+        if (Array.isArray(this.currentPhotos)) {
+            this.currentPhotos.forEach(photo => {
+                if (photo.camera && photo.camera.name) {
+                    cameras.add(photo.camera.name);
+                }
+            });
+        }
 
         // Save current selection
         const currentSelection = cameraFilter.value;
@@ -429,7 +446,7 @@ class MarsRoversPage {
                 <strong>Sol:</strong> ${photo.sol}
             </div>
             <div class="detail-item mb-3">
-                <strong>Earth Date:</strong> ${formatDate(photo.earth_date)}
+                <strong>Earth Date:</strong> ${DateUtils.formatDate(photo.earth_date)}
             </div>
             <div class="detail-item mb-3">
                 <strong>Status:</strong> ${photo.rover.status}
