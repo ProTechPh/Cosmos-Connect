@@ -3,7 +3,7 @@
 A beautiful, responsive web application that provides clean access to NASA's vast collection of space data and imagery through an intuitive glass morphism interface.
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-blue?style=for-the-badge&logo=vercel)](https://cosmos-connect.vercel.app)
-[![GitHub Stars](https://img.shields.io/github/stars/cosmos-connect/cosmos-connect?style=for-the-badge&logo=github)](https://github.com/cosmos-connect/cosmos-connect)
+[![GitHub Stars](https://img.shields.io/github/stars/cosmos-connect/cosmos-connect?style=for-the-badge&logo=github)](https://github.com/ProTechPh/Cosmos-Connect)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 [![NASA API](https://img.shields.io/badge/NASA-API-red?style=for-the-badge&logo=nasa)](https://api.nasa.gov/)
 
