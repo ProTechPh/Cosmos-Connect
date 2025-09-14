@@ -151,6 +151,26 @@
   transform: translateY(-2px);
 }
 
+/* Enhanced Form Select Options */
+.form-select option {
+  background: var(--deep-space);
+  color: var(--star-white);
+  padding: var(--space-3);
+  border: none;
+}
+
+.form-select option:hover,
+.form-select option:focus {
+  background: var(--glass-bg-light);
+  color: var(--star-white);
+}
+
+.form-select option:checked {
+  background: var(--earth-blue);
+  color: var(--star-white);
+  font-weight: 600;
+}
+
 .form-control::placeholder {
   color: rgba(255, 255, 255, 0.5);
   transition: var(--transition-fast);
