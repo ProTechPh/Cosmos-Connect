@@ -292,11 +292,8 @@ class APODApp {
               ` : ''}
               
               <div class="apod-actions mt-4">
-                <button class="btn btn-primary w-100 mb-2" onclick="apodApp.viewFullscreen()">
+                <button class="btn btn-primary w-100" onclick="apodApp.viewFullscreen()">
                   <i class="fas fa-expand me-2"></i>View Fullscreen
-                </button>
-                <button class="btn btn-outline-light w-100" onclick="apodApp.showImageDetails()">
-                  <i class="fas fa-info-circle me-2"></i>Technical Details
                 </button>
               </div>
             </div>
@@ -545,43 +542,14 @@ class APODApp {
     document.addEventListener('keydown', closeHandler);
   }
 
-  showImageDetails() {
-    if (!this.currentAPOD) return;
-
-    const modal = new bootstrap.Modal(document.createElement('div'));
-    modal._element.className = 'modal fade';
-    modal._element.innerHTML = `
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Image Details</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <table class="table table-glass">
-              <tr><td><strong>Title:</strong></td><td>${this.currentAPOD.title}</td></tr>
-              <tr><td><strong>Date:</strong></td><td>${DateUtils.formatDate(this.currentAPOD.date)}</td></tr>
-              <tr><td><strong>Media Type:</strong></td><td>${this.currentAPOD.media_type}</td></tr>
-              ${this.currentAPOD.copyright ? `<tr><td><strong>Copyright:</strong></td><td>${this.currentAPOD.copyright}</td></tr>` : ''}
-              <tr><td><strong>URL:</strong></td><td><a href="${this.currentAPOD.url}" target="_blank">View Original</a></td></tr>
-              ${this.currentAPOD.hdurl ? `<tr><td><strong>HD URL:</strong></td><td><a href="${this.currentAPOD.hdurl}" target="_blank">View HD</a></td></tr>` : ''}
-            </table>
-          </div>
-        </div>
-      </div>
-    `;
-
-    document.body.appendChild(modal._element);
-    modal.show();
-    
-    modal._element.addEventListener('hidden.bs.modal', () => {
-      document.body.removeChild(modal._element);
-    });
-  }
-
   showFavorites() {
-    const favoritesModal = new bootstrap.Modal(document.getElementById('favoritesModal'));
+    const modalElement = document.getElementById('favoritesModal');
     const favoritesContent = document.getElementById('favorites-content');
+    
+    if (!modalElement || !favoritesContent) {
+      console.warn('Favorites modal elements not found');
+      return;
+    }
     
     if (this.favorites.length === 0) {
       favoritesContent.innerHTML = `
@@ -615,6 +583,7 @@ class APODApp {
       `;
     }
     
+    const favoritesModal = new bootstrap.Modal(modalElement);
     favoritesModal.show();
   }
 
@@ -624,9 +593,14 @@ class APODApp {
       dateInput.value = date;
     }
     
-    // Close modal
-    const modal = bootstrap.Modal.getInstance(document.getElementById('favoritesModal'));
-    modal.hide();
+    // Close modal safely
+    const modalElement = document.getElementById('favoritesModal');
+    if (modalElement) {
+      const modal = bootstrap.Modal.getInstance(modalElement);
+      if (modal) {
+        modal.hide();
+      }
+    }
     
     // Load the APOD
     this.loadAPOD(date);

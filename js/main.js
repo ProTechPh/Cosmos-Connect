@@ -616,14 +616,28 @@ if (document.readyState === 'loading') {
 
 // Global error handler
 window.addEventListener('error', (event) => {
+  // Skip null or undefined errors
+  if (!event.error) {
+    return;
+  }
+  
   console.error('Global error:', event.error);
-  app.showToast('An unexpected error occurred', 'error');
+  if (window.CosmosConnect && window.CosmosConnect.app) {
+    window.CosmosConnect.app.showToast('An unexpected error occurred', 'error');
+  }
 });
 
 // Unhandled promise rejection handler
 window.addEventListener('unhandledrejection', (event) => {
+  // Skip null or undefined rejections
+  if (!event.reason) {
+    return;
+  }
+  
   console.error('Unhandled promise rejection:', event.reason);
-  app.showToast('An unexpected error occurred', 'error');
+  if (window.CosmosConnect && window.CosmosConnect.app) {
+    window.CosmosConnect.app.showToast('An unexpected error occurred', 'error');
+  }
 });
 
 // Export for use in other files
