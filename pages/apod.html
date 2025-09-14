@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APOD - Astronomy Picture of the Day | Cosmos Connect</title>
+    <meta name="description" content="Explore NASA's Astronomy Picture of the Day collection with detailed explanations and stunning cosmic imagery">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loader"></div>
+            <p>Loading cosmic wonders...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg glass-nav fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-rocket me-2"></i>
+                <span class="brand-text">Cosmos Connect</span>
+            </a>
+            
+            <!-- Spacer to push burger menu to the right -->
+            <div class="flex-grow-1"></div>
+            
+            <!-- Burger Menu Button (Far Right) -->
+            <button class="burger-menu ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="burger-lines">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+            </button>
+            
+            <!-- Mobile Menu -->
+            <div class="collapse navbar-collapse mobile-menu" id="navbarNav">
+                <!-- Mobile Search -->
+                <div class="mobile-search-container mb-4">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="form-control search-input" placeholder="Search NASA data..." id="mobile-search">
+                    </div>
+                </div>
+                
+                <!-- Quick Access Section -->
+                <div class="menu-section">
+                    <h6 class="menu-section-title">Quick Access</h6>
+                    <div class="nav-grid">
+                        <a class="nav-card" href="../index.html">
+                            <div class="nav-card-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <span class="nav-card-text">Home</span>
+                        </a>
+                        <a class="nav-card active" href="apod.html">
+                            <div class="nav-card-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <span class="nav-card-text">APOD</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Space Data Section -->
+                <div class="menu-section">
+                    <h6 class="menu-section-title">Space Data</h6>
+                    <div class="nav-grid">
+                        <a class="nav-card" href="mars-weather.html">
+                            <div class="nav-card-icon">
+                                <i class="fas fa-thermometer-half"></i>
+                            </div>
+                            <span class="nav-card-text">Mars Weather</span>
+                        </a>
+                        <a class="nav-card" href="asteroids.html">
+                            <div class="nav-card-icon">
+                                <i class="fas fa-meteor"></i>
+                            </div>
+                            <span class="nav-card-text">Asteroids</span>
+                        </a>
+                        <a class="nav-card" href="space-weather.html">
+                            <div class="nav-card-icon">
+                                <i class="fas fa-sun"></i>
+                            </div>
+                            <span class="nav-card-text">Space Weather</span>
+                        </a>
+                        <a class="nav-card" href="mars-rovers.html">
+                            <div class="nav-card-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <span class="nav-card-text">Mars Rovers</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Exploration Section -->
+                <div class="menu-section">
+                    <h6 class="menu-section-title">Exploration</h6>
+                    <div class="nav-grid">
+                        <a class="nav-card" href="exoplanets.html">
+                            <div class="nav-card-icon">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <span class="nav-card-text">Exoplanets</span>
+                        </a>
+                        <a class="nav-card" href="about.html">
+                            <div class="nav-card-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <span class="nav-card-text">About</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Footer Links -->
+                <div class="mobile-menu-footer mt-4 pt-4">
+                    <div class="footer-links d-flex justify-content-center gap-4">
+                        <a href="https://api.nasa.gov/" target="_blank" class="footer-link">
+                            <i class="fas fa-external-link-alt me-1"></i>NASA APIs
+                        </a>
+                        <a href="https://github.com" target="_blank" class="footer-link">
+                            <i class="fab fa-github me-1"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container py-5">
+            <!-- Header -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                            <li class="breadcrumb-item active">APOD</li>
+                        </ol>
+                    </nav>
+                    
+                    <div class="page-header glass-card p-4 mb-4">
+                        <h1 class="page-title mb-3">
+                            <i class="fas fa-camera me-3"></i>
+                            Astronomy Picture of the Day
+                        </h1>
+                        <p class="page-description mb-0">
+                            Discover stunning cosmic imagery with detailed explanations from NASA's most popular feature. Each day, NASA presents a different image or photograph of our fascinating universe.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date Selector -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="date-selector glass-card p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h5 class="mb-3">Select Date</h5>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-calendar"></i>
+                                    </span>
+                                    <input type="date" id="apod-date" class="form-control" max="" value="">
+                                    <button class="btn btn-primary" id="load-date-btn">
+                                        <i class="fas fa-search me-1"></i>Load
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="quick-actions">
+                                    <h6 class="mb-3">Quick Actions</h6>
+                                    <div class="btn-group-vertical w-100" role="group">
+                                        <button class="btn btn-outline-light btn-sm mb-2" id="today-btn">
+                                            <i class="fas fa-calendar-day me-1"></i>Today
+                                        </button>
+                                        <button class="btn btn-outline-light btn-sm mb-2" id="random-btn">
+                                            <i class="fas fa-random me-1"></i>Random
+                                        </button>
+                                        <button class="btn btn-outline-light btn-sm" id="favorites-btn">
+                                            <i class="fas fa-heart me-1"></i>My Favorites
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- APOD Content -->
+            <div id="apod-content">
+                <!-- Content will be dynamically loaded here -->
+            </div>
+
+            <!-- Favorites Modal -->
+            <div class="modal fade" id="favoritesModal" tabindex="-1" aria-labelledby="favoritesModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="favoritesModalLabel">
+                                <i class="fas fa-heart me-2"></i>My Favorite APODs
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="favorites-content">
+                            <!-- Favorites will be loaded here -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-outline-danger" id="clear-favorites-btn">
+                                <i class="fas fa-trash me-1"></i>Clear All
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="footer-brand">
+                        <i class="fas fa-rocket me-2"></i>
+                        <strong>Cosmos Connect</strong>
+                    </div>
+                    <p class="mb-0">Making NASA's space data accessible to everyone</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="footer-links">
+                        <a href="about.html" class="me-3">About</a>
+                        <a href="https://api.nasa.gov/" target="_blank" class="me-3">NASA APIs</a>
+                        <a href="https://github.com" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                    <p class="mb-0 mt-2">
+                        <small>Data provided by NASA Open APIs</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="/js/config.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/caching.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/navigation.js"></script>
+    <script src="/js/search.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/apod.js"></script>
+</body>
+</html>

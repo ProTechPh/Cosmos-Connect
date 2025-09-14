@@ -1,0 +1,117 @@
+{
+  "name": "cosmos-connect",
+  "version": "1.0.0",
+  "description": "A beautiful, responsive web application that provides clean access to NASA's space data through an intuitive glass morphism interface",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve -s . -l 8000",
+    "dev": "npx serve -s . -l 3000",
+    "build": "node scripts/build.js",
+    "lint": "eslint js/**/*.js",
+    "format": "prettier --write \"**/*.{js,css,html,md}\"",
+    "validate": "html-validate pages/*.html index.html",
+    "test": "npm run lint && npm run validate",
+    "deploy:netlify": "netlify deploy --prod --dir .",
+    "deploy:vercel": "vercel --prod",
+    "deploy:surge": "surge . cosmos-connect.surge.sh",
+    "optimize": "node scripts/optimize.js",
+    "lighthouse": "lighthouse http://localhost:8000 --output=html --output-path=lighthouse-report.html",
+    "analyze": "npx webpack-bundle-analyzer"
+  },
+  "keywords": [
+    "nasa",
+    "space",
+    "astronomy",
+    "apod",
+    "mars",
+    "exoplanets",
+    "web-app",
+    "glass-morphism",
+    "responsive",
+    "javascript"
+  ],
+  "author": {
+    "name": "Cosmos Connect Team",
+    "email": "contact@cosmos-connect.dev",
+    "url": "https://cosmos-connect.dev"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cosmos-connect/cosmos-connect.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cosmos-connect/cosmos-connect/issues"
+  },
+  "homepage": "https://cosmos-connect.dev",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "not dead"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.22.0",
+    "@babel/preset-env": "^7.22.0",
+    "eslint": "^8.42.0",
+    "html-validate": "^8.0.0",
+    "lighthouse": "^10.2.0",
+    "netlify-cli": "^15.7.0",
+    "prettier": "^2.8.8",
+    "serve": "^14.2.0",
+    "surge": "^0.23.1",
+    "vercel": "^31.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.0",
+    "bootstrap-icons": "^1.10.0",
+    "chart.js": "^4.3.0"
+  },
+  "config": {
+    "port": 8000,
+    "host": "localhost"
+  },
+  "metadata": {
+    "features": {
+      "nasa_apis": [
+        "APOD",
+        "Mars Weather",
+        "Near Earth Objects",
+        "DONKI Space Weather",
+        "Mars Rover Photos",
+        "Exoplanet Archive"
+      ],
+      "ui_features": [
+        "Glass Morphism Design",
+        "Responsive Layout",
+        "Dark Theme",
+        "Global Search",
+        "Offline Support",
+        "Advanced Caching"
+      ],
+      "technologies": [
+        "Vanilla JavaScript ES6+",
+        "Bootstrap 5",
+        "Chart.js",
+        "CSS Grid",
+        "LocalStorage API",
+        "Fetch API"
+      ]
+    },
+    "performance": {
+      "lighthouse_score": "> 90",
+      "first_contentful_paint": "< 1.5s",
+      "largest_contentful_paint": "< 2.5s",
+      "cumulative_layout_shift": "< 0.1"
+    },
+    "browser_support": {
+      "chrome": ">= 80",
+      "firefox": ">= 75",
+      "safari": ">= 13",
+      "edge": ">= 80"
+    }
+  }
+}
